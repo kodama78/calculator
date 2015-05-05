@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator Prototype 1</title>
+	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src = "calculator.js"></script>
+	<link rel="stylesheet" type="text/css" href="calculator.css">
+</head>
+<body>
+	<input id="number_0" class="number" placeholder="number 0" type="text" value='18'>
+	<span id='operator'>+</span>
+	<input id="number_1" class="number" placeholder="number 1" type="text" value='6'>
+	<button type="button" onclick="add_numbers()">Add</button>
+	<button type="button" onclick="subtract_numbers()">Subtract</button>
+	<button type="button" onclick="multiply_numbers()">Multiply</button>
+	<button type="button" onclick="divide_numbers()">divide</button>
+ 	<br>
+ 	<div id="result_display" ></div>
+</body>
+</html>
