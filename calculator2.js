@@ -9,12 +9,12 @@ var answer = 0
 
 // CLEAR FUNCTION
 function clear_all(clear_all_data){
-	numbers[0] = '';
 	numbers[1] = '';
 	numberString = ''
-	indexOfString = 0;
 	decimal_point = false;
 	if (clear_all_data) {
+		numbers[0] = '';
+		indexOfString = 0;
 		$('#inputdisplay').val(0);
 	}
 }
@@ -23,12 +23,14 @@ function clear_all(clear_all_data){
 function calculate(){
 	var num1 = parseFloat(numbers[0]);
 	var num2 = parseFloat(numbers[1]);
-console.log('I am in the calculate function')
-	switch (op){
-		case '+':
-		console.log('num1 : ',num1);
-		console.log('num2 : ',num2);
+	console.log('I am in the calculate function')
+	console.log('num1 : ',num1);
+	console.log('num2 : ',num2);
 
+	switch (op){
+		
+		
+		case '+':
 			answer = num1 + num2;
 			console.log('result: ',answer)
 	 		op = '+';
@@ -53,8 +55,8 @@ function calc_mult_num(){
 	if (numbers[1] != ''){
 			calculate();
 			numbers[0] = answer;
-			numbers[1]=''
-		}
+			numbers[1]='';
+	}
 }
 $( document).ready(function(){
 
@@ -68,7 +70,8 @@ $( document).ready(function(){
 		display.val(numberString);
 		decimal_point = false;
 		op = "+";
-		calc_mult_num();		
+		calc_mult_num();
+
 		//$('#equal-sign').addClass('addition')
 	});
 	// SUBTRACTION FUNCTION
@@ -128,19 +131,11 @@ $( document).ready(function(){
 	});
 	//AC KEY
 	$('#all-clear-key').click(function(){
-		numberString = '';
-		numbers = ['',''];
-		indexOfString = 0;
-		decimal_point = false;
-		$('#inputdisplay').val(0);
+		clear_all(true);
 	});
-	//CLEAR KEY
+	//CLEAR KEY - STILL HAS VISUAL DISPLAY ISSUES
 	$('#clear_key').click(function(){
-		console.log('clear key pushed');
-		numberString = ''
-		numbers[indexOfString] = '';
-		$('#inputdisplay').val(0);
-		decimal_point = false;
+		clear_all();
 	});
 	// DECIMAL KEY
 	$('#decimal_key').click(function(){
