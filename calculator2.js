@@ -5,7 +5,8 @@ var indexOfString = 0; //index of the string created in numberString
 var op = '';
 var decimal_point = false;
 clear_all_data = false;
-var answer = 0
+var answer = null;
+var solved = null;
 
 // CLEAR FUNCTION
 function clear_all(clear_all_data){
@@ -58,6 +59,7 @@ function calc_mult_num(){
 			numbers[1]='';
 	}
 }
+
 $( document).ready(function(){
 
 	var display = $("#inputdisplay");
@@ -65,57 +67,79 @@ $( document).ready(function(){
 	// ADDITION FUNCTION
 	$('#addition-button').click(function(){
 		console.log("addition-button clicked");
-		indexOfString = 1;
-		numberString += ' + ';
-		display.val(numberString);
-		decimal_point = false;
-		op = "+";
-		calc_mult_num();
-
+		if (solved !== null && numbers[0] == ""){
+			numbers[0] = answer;
+			numbers[1] = answer;
+			calculate();
+		} else {
+			indexOfString = 1;
+			numberString += ' + ';
+			display.val(numberString);
+			decimal_point = false;
+			op = "+";
+			calc_mult_num();
+		}
 		//$('#equal-sign').addClass('addition')
 	});
 	// SUBTRACTION FUNCTION
 	$('#subtraction-button').click(function(){
 		console.log('subtraction-button clicked');
-		indexOfString = 1;
+		if (solved !== null && numbers[0] == ""){
+			numbers[0] = answer;
+			numbers[1] = answer;
+			calculate();
+		} else {
+			indexOfString = 1;
 		numberString += ' - ';
 		display.val(numberString);
 		decimal_point = false;
 		op = '-';
 		calc_mult_num();
 		//$('#equal-sign').addClass('subtraction');
-		
+		}
 	});
 	// MULTIPLICATION FUNCTION
 	$('#multiplication-button').click(function(){
 		console.log('multiplication-button clicked');
-		indexOfString = 1;
-		numberString += ' * ';
-		display.val(numberString);
-		decimal_point = false;
-		op = '*'
-		calc_mult_num();
+		if (solved !== null && numbers[0] == ""){
+			numbers[0] = answer;
+			numbers[1] = answer;
+			calculate();
+		} else {
+			indexOfString = 1;
+			numberString += ' * ';
+			display.val(numberString);
+			decimal_point = false;
+			op = '*'
+			calc_mult_num();
 		//$('#equal-sign').addClass('multiplication');
-		
+		}
 	});
 	// DIVISION FUNCTION
 	$('#division-button').click(function(){
 		console.log('division-button clicked');
-		indexOfString = 1;
-		numberString += ' / ';
-		display.val(numberString);
-		decimal_point = false;
-		op = '/'
-		calc_mult_num();
-		//$('#equal-sign').addClass('division');
-		
+		if (solved !== null && numbers[0] == ""){
+			numbers[0] = answer;
+			numbers[1] = answer;
+			calculate();
+		} else {
+			indexOfString = 1;
+			numberString += ' / ';
+			display.val(numberString);
+			decimal_point = false;
+			op = '/'
+			calc_mult_num();
+			//$('#equal-sign').addClass('division');
+		}
 	});
 	// EQUAL SIGN
 	$('#equal-sign').click(function(){
 		console.log("equal sign clicked numbers=", numbers, op);
 		calculate();
-		var solved = numberString + " = " + answer; 
+		solved = numberString + " = " + answer; 
+		clear_all(true);
 		display.val(solved);
+		
 	});
 	
 	// NUMBER BUTTONS
