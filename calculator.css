@@ -1,7 +1,7 @@
 .calculator_body{
 	width: 300px;
 	height: 400px;
-	background-color: grey;
+	background-color: #213640;
 	font-family: 'Amatic SC', cursive, sans-serif; 
 }
 .button{
@@ -10,11 +10,15 @@
   	width: 20%;
   	font-size: 2em;
   	color: black;
-  	background-color: white;
   	margin: 0.7%;
   	margin-top: 1%;
   	margin-left: 3%;
-
+  	border: none;
+  	font-family: 'Amatic SC', cursive, sans-serif; 
+}
+.number-button{
+	background-color: #63A2BF;
+	color: white;
 }
 #clear_key{
 	width: 60%;
@@ -28,4 +32,8 @@
 	width: 88%;
 	margin: 1% 5%;
 	font-size: 2em;
+}
+.operator{
+	background-color: #426C7F;
+	color: white;
 }
