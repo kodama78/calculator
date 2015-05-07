@@ -1,0 +1,31 @@
+.calculator_body{
+	width: 300px;
+	height: 400px;
+	background-color: grey;
+	font-family: 'Amatic SC', cursive, sans-serif; 
+}
+.button{
+	display: inline-block;
+  	height: 16%;
+  	width: 20%;
+  	font-size: 2em;
+  	color: black;
+  	background-color: white;
+  	margin: 0.7%;
+  	margin-top: 1%;
+  	margin-left: 3%;
+
+}
+#clear_key{
+	width: 60%;
+}
+#all-clear-key{
+	width: 25%;
+	margin-left: 7%;
+}
+#inputdisplay{
+	height: 10%;
+	width: 88%;
+	margin: 1% 5%;
+	font-size: 2em;
+}
