@@ -14,7 +14,7 @@
   	margin-top: 1%;
   	margin-left: 3%;
   	border: none;
-  	font-family: 'Amatic SC', cursive, sans-serif; 
+  	font-family: 'Amatic SC', cursive, sans-serif;   
 }
 .number-button{
 	background-color: #63A2BF;
@@ -32,6 +32,7 @@
 	width: 88%;
 	margin: 1% 5%;
 	font-size: 2em;
+	font-family: 'Amatic SC', cursive, sans-serif;   
 }
 .operator{
 	background-color: #426C7F;
