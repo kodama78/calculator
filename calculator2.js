@@ -172,6 +172,7 @@ $( document).ready(function(){
 	// EQUAL SIGN
 	$('#equal-sign').click(function(){
 		iterator();
+		$('#inputdisplay').val(answer);
 		// console.log("equal sign clicked numbers=", numbers, op);
 		// calculate();
 		// solved = numberString + " = " + answer; 
