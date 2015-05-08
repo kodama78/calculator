@@ -1,13 +1,15 @@
 
 var numberString = ''; //string that is concatenating my number to a string
-var numbers = ['','']; //the array that holds my numberString
+var numbers = ['', '']; //the array that holds my numberString
 var indexOfString = 0; //index of the string created in numberString
 var op = '';
 var decimal_point = false;
 clear_all_data = false;
 var answer = null;
 var solved = null;
-
+var temp_num = '';
+var num1 = 0;
+var num2 = 0;
 // CLEAR FUNCTION
 function clear_all(clear_all_data){
 	numbers[1] = '';
@@ -19,11 +21,16 @@ function clear_all(clear_all_data){
 		$('#inputdisplay').val(0);
 	}
 }
-
+function iterator(){
+	for (var i = 0; i < numbers.length; i++){
+		if(numbers[i] == '*' || numbers[i] == '/'){
+			num1 = parseFloat(numbers[i-1]);
+			num2 = parseFloat(numbers[i+1]);
+		}
+	}
+}
 // CALCULATE FUNCTION
 function calculate(){
-	var num1 = parseFloat(numbers[0]);
-	var num2 = parseFloat(numbers[1]);
 	console.log('I am in the calculate function')
 	console.log('num1 : ',num1);
 	console.log('num2 : ',num2);
@@ -70,16 +77,20 @@ $( document).ready(function(){
 		if (solved !== null && numbers[0] == ""){
 			numbers[0] = answer;
 			numbers[1] = answer;
-			calculate();
+			//calculate();
 		} else {
-			indexOfString = 1;
+			
+			indexOfString += 1;
+			numbers[indexOfString] = '+';
 			numberString += ' + ';
+			indexOfString += 1;
+			numbers[indexOfString] = '';
 			display.val(numberString);
 			decimal_point = false;
 			op = "+";
-			calc_mult_num();
+			//calc_mult_num();
 		}
-		//$('#equal-sign').addClass('addition')
+		$('#equal-sign').addClass('addition')
 	});
 	// SUBTRACTION FUNCTION
 	$('#subtraction-button').click(function(){
@@ -89,13 +100,16 @@ $( document).ready(function(){
 			numbers[1] = answer;
 			calculate();
 		} else {
-			indexOfString = 1;
-		numberString += ' - ';
-		display.val(numberString);
-		decimal_point = false;
-		op = '-';
-		calc_mult_num();
-		//$('#equal-sign').addClass('subtraction');
+			indexOfString += 1;
+			numbers[indexOfString] = '-';
+			numberString += ' - ';
+			indexOfString += 1;
+			numbers[indexOfString] = '';
+			display.val(numberString);
+			decimal_point = false;
+			op = "-";
+			//calc_mult_num();
+			//$('#equal-sign').addClass('subtraction');
 		}
 	});
 	// MULTIPLICATION FUNCTION
@@ -106,12 +120,15 @@ $( document).ready(function(){
 			numbers[1] = answer;
 			calculate();
 		} else {
-			indexOfString = 1;
+			indexOfString += 1;
+			numbers[indexOfString] = '*';
 			numberString += ' * ';
+			indexOfString += 1;
+			numbers[indexOfString] = '';
 			display.val(numberString);
 			decimal_point = false;
-			op = '*'
-			calc_mult_num();
+			op = "*";
+			//calc_mult_num();
 		//$('#equal-sign').addClass('multiplication');
 		}
 	});
@@ -123,22 +140,26 @@ $( document).ready(function(){
 			numbers[1] = answer;
 			calculate();
 		} else {
-			indexOfString = 1;
+			indexOfString += 1;
+			numbers[indexOfString] = '/';
 			numberString += ' / ';
+			indexOfString += 1;
+			numbers[indexOfString] = '';
 			display.val(numberString);
 			decimal_point = false;
-			op = '/'
-			calc_mult_num();
+			op = "/";
+			//calc_mult_num();
 			//$('#equal-sign').addClass('division');
 		}
 	});
 	// EQUAL SIGN
 	$('#equal-sign').click(function(){
-		console.log("equal sign clicked numbers=", numbers, op);
-		calculate();
-		solved = numberString + " = " + answer; 
-		clear_all(true);
-		display.val(solved);
+		iterator();
+		// console.log("equal sign clicked numbers=", numbers, op);
+		// calculate();
+		// solved = numberString + " = " + answer; 
+		// clear_all(true);
+		// display.val(solved);
 		
 	});
 	
