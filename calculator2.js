@@ -13,7 +13,7 @@ var num2 = 0;
 // CLEAR FUNCTION
 function clear_all(clear_all_data){
 	numbers[1] = '';
-	numberString = ''
+	numberString = '';
 	decimal_point = false;
 	if (clear_all_data) {
 		numbers[0] = '';
@@ -24,11 +24,28 @@ function clear_all(clear_all_data){
 function iterator(){
 	for (var i = 0; i < numbers.length; i++){
 		if(numbers[i] == '*' || numbers[i] == '/'){
+			op = numbers[i];
 			num1 = parseFloat(numbers[i-1]);
 			num2 = parseFloat(numbers[i+1]);
+			calculate();
+			numbers[i-1] = answer;
+			numbers.splice(i, 2);
 		}
 	}
-}
+	for (var i = 0; i < numbers.length; i++){
+		if(numbers[i] == '+' || numbers[i] == '-'){
+			op = numbers[i];
+			num1 = parseFloat(numbers[i-1]);
+			num2 = parseFloat(numbers[i+1]);
+			console.log('num1: ', num1);
+			console.log('num2: ', num2);
+			calculate();
+			numbers[i-1] = answer;
+			numbers.splice(i, 2);
+		}
+	}
+}	
+
 // CALCULATE FUNCTION
 function calculate(){
 	console.log('I am in the calculate function')
@@ -98,7 +115,7 @@ $( document).ready(function(){
 		if (solved !== null && numbers[0] == ""){
 			numbers[0] = answer;
 			numbers[1] = answer;
-			calculate();
+			//calculate();
 		} else {
 			indexOfString += 1;
 			numbers[indexOfString] = '-';
@@ -118,7 +135,7 @@ $( document).ready(function(){
 		if (solved !== null && numbers[0] == ""){
 			numbers[0] = answer;
 			numbers[1] = answer;
-			calculate();
+			//calculate();
 		} else {
 			indexOfString += 1;
 			numbers[indexOfString] = '*';
@@ -138,7 +155,7 @@ $( document).ready(function(){
 		if (solved !== null && numbers[0] == ""){
 			numbers[0] = answer;
 			numbers[1] = answer;
-			calculate();
+			//calculate();
 		} else {
 			indexOfString += 1;
 			numbers[indexOfString] = '/';
