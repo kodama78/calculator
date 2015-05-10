@@ -99,14 +99,14 @@ function checkLastIndexIsOperator(){
 function addingTheOperation(operator){
 
 	//check if we already added an operator
-	// if (checkLastIndexIsOperator(operator)){
-	// 	//operator is added already is it the same
-	// 	if(operator === numbers[numbers.length-1]){
-	// 		return false;
-	// 	} else {
-	// 		numbers[numbers.length-1] = operator;
-	// 	}
-	// }
+	  if (checkLastIndexIsOperator(operator)){
+	// //operator is added already is it the same
+	 	if(operator === numbers[numbers.length-1]){
+	 		return false;
+	 	} else {
+	 		numbers[numbers.length-1] = operator;
+	 	}
+	 }
 
 	if (solved !== null && numbers[0] == ""){
 			numbers[0] = answer;
@@ -116,9 +116,10 @@ function addingTheOperation(operator){
 		
 		indexOfString += 1;
 		numbers[indexOfString] = op;
-		indexOfString += 1;
-		numbers[indexOfString] = '';
+		//indexOfString += 1;
+		//	numbers[indexOfString] = '';
  		//numberString += ' '+ op;
+ 		console.log('numbers array is: ', numbers)
 		display.val(numberString);
 		decimal_point = false;
 	}
@@ -176,7 +177,15 @@ $( document).ready(function(){
 		numberString += num;
 		console.log('putting the digit '+num+' into position '+indexOfString);
 		console.log('array now is',numbers)
-		numbers[indexOfString] += num;
+		if(numbers[numbers.length-1] == '' || decimal_point == true){
+			numbers[indexOfString] += num;
+		} else {
+			indexOfString+= 1;
+			numbers[indexOfString] = '';
+			numbers[indexOfString] += num;
+		}
+		
+		//indexOfString+=1;
 		console.log("number string", numberString);
 		console.log("number array is ", numbers);	
 		$('#inputdisplay').val(numberString);
