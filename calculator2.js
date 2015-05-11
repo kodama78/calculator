@@ -21,8 +21,8 @@ function clear_all(clear_all_data){
 		numbers = ['', ''];
 		indexOfString = 0;
 		spliced_elements = [];
-		answer = 0;
-		solved = 0;
+		answer = null;
+		solved = null;
 		$('#inputdisplay').val(0);
 	}
 }
@@ -102,7 +102,9 @@ function checkLastIndexIsOperator(){
 }
 
 function addingTheOperation(operator){
-	
+	if (numbers[0] == ''){
+		return false;
+	}
 	if (solved !== null && numbers[0] == solved){
 			numbers[0] = answer;
 			numbers[1] = op;
@@ -175,11 +177,17 @@ $( document).ready(function(){
 				alert("Seriously? SERIOUSLY???");  
 			}
 		}
+		if(answer ==  null && numbers[0] != '' && numbers[1] == op){
+			numbers[2] = numbers[0];
+		}
 		iterator();
 		$('#inputdisplay').val(answer);
 		console.log('spliced elements are: ', spliced_elements);
-		numbers[1] = spliced_elements[0];
-		numbers[2] = spliced_elements[1];
+		if(answer){
+			numbers[1] = spliced_elements[0];
+			numbers[2] = spliced_elements[1];
+		}
+		
 		// console.log("equal sign clicked numbers=", numbers, op);
 		// calculate();
 		// solved = numberString + " = " + answer; 
