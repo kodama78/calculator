@@ -23,6 +23,8 @@ function clear_all(clear_all_data){
 		spliced_elements = [];
 		answer = null;
 		solved = null;
+		num1 = 0;
+		num2 = 0;
 		$('#inputdisplay').val(0);
 	}
 }
@@ -72,7 +74,7 @@ function calculate(){
 	 		op = '-';
 	 		break;
  		case '*':
- 			answer = num1 * num2;
+ 			answer = num1*num2;
 	 		op = '*';
 	 		break;
  		case '/':
@@ -177,9 +179,9 @@ $( document).ready(function(){
 				alert("Seriously? SERIOUSLY???");  
 			}
 		}
-		if(answer ==  null && numbers[0] != '' && numbers[1] == op){
-			numbers[2] = numbers[0];
-		}
+		// if(answer ==  null && numbers[0] != '' && numbers[1] == op){
+		// 	numbers[2] = numbers[0];
+		// }
 		iterator();
 		$('#inputdisplay').val(answer);
 		console.log('spliced elements are: ', spliced_elements);
@@ -202,6 +204,11 @@ $( document).ready(function(){
 		numberString += num;
 		console.log('putting the digit '+num+' into position '+indexOfString);
 		console.log('array now is',numbers)
+		if (numbers[0] == answer){
+			clear_all(true);
+			numberString += num
+			$('#inputdisplay').val(numberString);
+		}
 		if(numbers[numbers.length-1] == '' || decimal_point == true){
 			numbers[indexOfString] += num;
 		} else {
