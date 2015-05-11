@@ -76,6 +76,7 @@ function calculate(){
 	 		op = '/';
 		 	break;
 	}
+	solved = answer;
 }
 
 // CALCULATE MULTIPLE NUMBERS
@@ -97,30 +98,30 @@ function checkLastIndexIsOperator(){
 }
 
 function addingTheOperation(operator){
-
+	if (solved !== null && numbers[0] == solved){
+			numbers[0] = answer;
+			numbers[1] = op;
+			numbers[2] = answer;
+	}
 	//check if we already added an operator
-	  if (checkLastIndexIsOperator(operator)){
-	// //operator is added already is it the same
+	if (checkLastIndexIsOperator(operator)){
+
+	//operator is added already is it the same
 	 	if(operator === numbers[numbers.length-1]){
 	 		return false;
-	 	} else {
-	 		numbers[numbers.length-1] = operator;
 	 	}
-	 }
-
-	if (solved !== null && numbers[0] == ""){
-			numbers[0] = answer;
-			numbers[1] = answer;
-		} 
-	else {
+		else if(operator !== numbers[numbers.length-1]){
+			numbers[numbers.length-1] = operator;
+		}
+	}
+	else{
 		
 		indexOfString += 1;
-		numbers[indexOfString] = op;
+		numbers[indexOfString] = operator;
 		//indexOfString += 1;
 		//	numbers[indexOfString] = '';
  		//numberString += ' '+ op;
  		console.log('numbers array is: ', numbers)
-		display.val(numberString);
 		decimal_point = false;
 	}
 }
@@ -132,8 +133,8 @@ $( document).ready(function(){
 		op = "+"
 		console.log("addition-button clicked");
 		addingTheOperation("+");
-		numberString += op + ' ';
-		display.val(numberString);
+		numberString += ' ' + op + ' ';
+		$('#inputdisplay').val(numberString);
 	});
 	// SUBTRACTION FUNCTION
 	$('#subtraction-button').click(function(){
@@ -141,7 +142,7 @@ $( document).ready(function(){
 		console.log('subtraction-button clicked');
 		addingTheOperation("-");
 		numberString += op + ' ';
-		display.val(numberString);
+		$('#inputdisplay').val(numberString);
 	});
 	// MULTIPLICATION FUNCTION
 	$('#multiplication-button').click(function(){
@@ -149,7 +150,7 @@ $( document).ready(function(){
 		console.log('multiplication-button clicked');
 		addingTheOperation("*");
 		numberString += op + ' ';
-		display.val(numberString);
+		$('#inputdisplay').val(numberString);
 	});
 	// DIVISION FUNCTION
 	$('#division-button').click(function(){
@@ -157,7 +158,7 @@ $( document).ready(function(){
 		console.log('division-button clicked');
 		addingTheOperation("/");
 		numberString += op + ' ';
-		display.val(numberString);
+		$('#inputdisplay').val(numberString);
 	});
 	// EQUAL SIGN
 	$('#equal-sign').click(function(){
@@ -185,7 +186,6 @@ $( document).ready(function(){
 			numbers[indexOfString] += num;
 		}
 		
-		//indexOfString+=1;
 		console.log("number string", numberString);
 		console.log("number array is ", numbers);	
 		$('#inputdisplay').val(numberString);
