@@ -10,6 +10,7 @@ var solved = null;
 var temp_num = '';
 var num1 = 0;
 var num2 = 0;
+var spliced_elements = [];
 var display = $("#inputdisplay");
 // CLEAR FUNCTION
 function clear_all(clear_all_data){
@@ -30,7 +31,7 @@ function iterator(){
 			num2 = parseFloat(numbers[i+1]);
 			calculate();
 			numbers[i-1] = answer;
-			numbers.splice(i, 2);
+			spliced_elements = numbers.splice(i, 2);
 			i = 0;
 		}
 	}
@@ -43,7 +44,7 @@ function iterator(){
 			console.log('num2: ', num2);
 			calculate();
 			numbers[i-1] = answer;
-			numbers.splice(i, 2);
+			spliced_elements = numbers.splice(i, 2);
 			i = 0;
 		}
 	}
@@ -104,7 +105,7 @@ function addingTheOperation(operator){
 			numbers[2] = answer;
 	}
 	//check if we already added an operator
-	if (checkLastIndexIsOperator(operator)){
+	else if (checkLastIndexIsOperator(operator)){
 
 	//operator is added already is it the same
 	 	if(operator === numbers[numbers.length-1]){
@@ -164,6 +165,9 @@ $( document).ready(function(){
 	$('#equal-sign').click(function(){
 		iterator();
 		$('#inputdisplay').val(answer);
+		console.log('spliced elements are: ', spliced_elements);
+		numbers[1] = spliced_elements[0];
+		numbers[2] = spliced_elements[1];
 		// console.log("equal sign clicked numbers=", numbers, op);
 		// calculate();
 		// solved = numberString + " = " + answer; 
