@@ -20,6 +20,9 @@ function clear_all(clear_all_data){
 	if (clear_all_data) {
 		numbers = ['', ''];
 		indexOfString = 0;
+		spliced_elements = [];
+		answer = 0;
+		solved = 0;
 		$('#inputdisplay').val(0);
 	}
 }
@@ -99,6 +102,7 @@ function checkLastIndexIsOperator(){
 }
 
 function addingTheOperation(operator){
+	
 	if (solved !== null && numbers[0] == solved){
 			numbers[0] = answer;
 			numbers[1] = op;
@@ -163,6 +167,14 @@ $( document).ready(function(){
 	});
 	// EQUAL SIGN
 	$('#equal-sign').click(function(){
+		if (numbers[0] != '' && numbers[1] == ''){
+			answer = numbers[0]
+		}
+		for (var i = 0; i < numbers.length; i++){
+			if (numbers[i] == "/" && numbers[i+1] == "0") {
+				alert("Seriously? SERIOUSLY???");  
+			}
+		}
 		iterator();
 		$('#inputdisplay').val(answer);
 		console.log('spliced elements are: ', spliced_elements);
