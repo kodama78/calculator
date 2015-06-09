@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Calculator Prototype 1</title>
+	<title>Calculator</title>
 	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src = "calculator.js"></script>
 	<link rel="stylesheet" type="text/css" href="calculator.css">
+    <link href='http://fonts.googleapis.com/css?family=Amatic+SC:700,400' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<input id="number_0" class="number" placeholder="number 0" type="text" value='18'>
-	<span id='operator'>+</span>
-	<input id="number_1" class="number" placeholder="number 1" type="text" value='6'>
-	<button type="button" onclick="add_numbers()">Add</button>
-	<button type="button" onclick="subtract_numbers()">Subtract</button>
-	<button type="button" onclick="multiply_numbers()">Multiply</button>
-	<button type="button" onclick="divide_numbers()">divide</button>
- 	<br>
- 	<div id="result_display" ></div>
+    <div class="calculator_body">
+        <input id="inputdisplay" placeholder="0">
+        <br>
+        <button type="button" class="number-button button" id="7" >7</button>
+        <button type="button" class="number-button button" id="8" >8</button>
+        <button type="button" class="number-button button" id="9" >9</button>
+        <button type="button" class="button operator" id="addition-button">+</button>
+        <br>
+        <button type="button" class="number-button button" id="4" >4</button>
+        <button type="button" class="number-button button" id="5" >5</button>
+        <button type="button" class="number-button button" id="6" >6</button>
+        <button type="button" class="button operator" id="subtraction-button">-</button>
+        <br>
+        <button type="button" class="number-button button" id="1" >1</button>
+        <button type="button" class="number-button button" id="2" >2</button>
+        <button type="button" class="number-button button" id="3" >3</button>
+        <button type="button" class="button operator" id="multiplication-button">*</button>
+        <br>
+        <button type="button" class="button"id="decimal_key">.</button>
+        <button type="button" class="number-button button" id="0">0</button>
+        <button type="button" class="button operator" id="division-button">/</button>
+        <button type="button" class="button" id="equal-sign">=</button>
+        
+        <br>
+        <button type="button" class="button" id="clear_key">CLEAR</button>
+        <button type="button" class="button" id="all-clear-key">AC</button>
+        
+        <!-- <button type="button" id="negative_sign_key">+/-</button> -->
+        <!-- <button type="button" id="exponent key">^</button> -->
+    </div>
+	
+
 </body>
 </html>
